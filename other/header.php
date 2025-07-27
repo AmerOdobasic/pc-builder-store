@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Build your dream PC with quality parts.">
     <link rel="stylesheet" href="/pc-builder-store/assets/css/styles.css"></head>
+    <script src="assets/js/main.js" defer></script>
 <body>
 
 <header>
