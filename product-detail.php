@@ -89,3 +89,4 @@ foreach ($optionsRaw as $opt) {
 </body>
 
 <footer><?php require_once 'other/footer.php'; ?></footer>
+</html>

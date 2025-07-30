@@ -14,7 +14,7 @@ if ($product_id <= 0 || $quantity <= 0) {
 if (!isset($_SESSION['cart'])) {
     $_SESSION['cart'] = [];
 }
-
+// Set the product ID as the key and quantity as the value in the cart array
 $_SESSION['cart'][$product_id] = [
     'quantity' => $quantity,
     'options' => $options

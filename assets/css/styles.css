@@ -213,3 +213,14 @@ footer {
 .checkout-button:hover {
     background-color: #16a34a;
 }
+/* Styling for the button after the user submits an order*/
+.button{
+    display: inline-block;
+    margin-top: 1.5rem;
+    padding: 0.6rem 1.2rem;
+    background-color: darkblue;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: bold;
+}
