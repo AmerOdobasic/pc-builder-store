@@ -46,7 +46,9 @@ foreach ($optionsRaw as $opt) {
     <div class="product-detail">
         <img id="product-image" src="<?php echo htmlspecialchars($product['image_url']); ?>" alt="<?php echo htmlspecialchars($product['name']); ?>" class="product-image">
         
+        <!-- A class for the whole product information. PHP will be added to display from the DB -->
         <div class="product-info">
+            <!-- Using number_format for better display of price and nl2br for better line breaks-->
             <p><strong>Price:</strong> $<span id="product-price"><?php echo number_format($product['price'], 2); ?></span></p>
             <p><strong>Description:</strong><br> <?php echo nl2br(htmlspecialchars($product['description'])); ?></p>
             <p><strong>Stock:</strong> <?php echo (int)$product['stock']; ?></p>
@@ -77,7 +79,7 @@ foreach ($optionsRaw as $opt) {
                     <br><br>
                 <?php endforeach; ?>
 
-                <!-- Quantity field -->
+                <!-- Quantity field. I set the Default values to start with 1 product -->
                 <label for="quantity">Quantity:</label>
                 <input type="number" name="quantity" value="1" min="1" max="<?php echo (int)$product['stock']; ?>" required>
                 <br><br>

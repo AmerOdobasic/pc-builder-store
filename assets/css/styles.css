@@ -1,36 +1,41 @@
 @import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap'); /* This line imports the google font from Google Fonts */
 
-
+/* Apply box-sizing to all elements and reset margin/padding for a more cleaner look */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
-
+/* Base body styles */
 body {
     font-family: 'Jost', sans-serif; /* This will set the font family for the entire page */
     background-color: #f2f4f8;
     color: #333;
-    line-height: 1.6;
+    line-height: 1.6;  /* Make the paragraphs more readable to users*/
 }
+/* Styling for the footer. Making sure the position is fixed so that it appears at the bottom of the page */
 footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
+    background-color: #1e293b;
+    color: #f8fafc;
+    text-align: center;
+    padding: 1rem;
 }
 
+    
+/* Styling for the header which includes the color for the background and padding */
 header {
     background-color: #1e293b; 
     padding: 1rem 0;
 }
 
+/* Styling for the navbar */
+/* Make sure the tabs are centered with proper spacing for gaps */
 .navbar {
-    display: flex;
+    display: flex; /*  This will arrange the elements in a row so that they are next to each other */
     justify-content: center;
     gap: 2rem;
 }
-
+/* Navigation link styles */
 .navbar a {
     color: #f8fafc;
     text-decoration: none;
@@ -49,7 +54,7 @@ main {
     padding: 2rem;
 }
 
-/* Product grid */
+/* Product grid. Make sure the grid is responsive and adjusts based on the screen size. Add some margin and padding for spacing */
 .product-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -58,33 +63,36 @@ main {
     margin-inline: 3.5rem;
 }
 
+/* Product card styles. This will include the product image, title, price, and description. Spacing, color, and shadows are added to each product card */
 .product-card {
     background-color: #ffffff;
     border: 1px solid #d1d5db;
     border-radius: 8px;
     padding: 1rem;
+    margin-bottom: 1.5rem;
     text-align: center;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+/* Product image styles. Spacing and color are added */
 .product-card img {
     max-width: 100%;
     height: 150px;
     object-fit: contain;
     margin-bottom: 0.75rem;
 }
-
+/* Product title styles*/
 .product-card h3 {
     font-size: 1.1rem;
     margin-bottom: 0.5rem;
 }
-
+/* Product price styles*/
 .product-card p {
     color: #2563eb; 
     font-weight: bold;
     margin-bottom: 0.75rem;
 }
-
+/* Product description styles*/
 .product-card a {
     display: inline-block;
     background-color: #2563eb;
@@ -92,27 +100,17 @@ main {
     padding: 0.5rem 1rem;
     border-radius: 4px;
     text-decoration: none;
-    transition: background-color 0.3s;
 }
 
 .product-card:hover {
     transform: scale(1.05);  /* Increase the size of the card on hover */
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out; /* Add a smooth transition effect */
 }
 
 .product-card a:hover {
     background-color: #1d4ed8;
 }
-
-/* Footer */
-footer {
-    background-color: #1e293b;
-    color: #f8fafc;
-    text-align: center;
-    padding: 1rem;
-    margin-top: 2rem;
-}
-/* Video Container Styles */
+/* Video Container Styles. Space the video container and add a box shadow for a cleaner look */
 .video-container {
     max-width: 1500px;
     margin: 30px auto;
@@ -136,6 +134,8 @@ footer {
     color: #666;
     font-style: italic;
 }
+
+/* Product details styles. Center the product details and add some spacing between the product image and the product information */
 .product-detail {
     display: flex;
     flex-wrap: wrap;
@@ -152,7 +152,7 @@ footer {
     border: 1px solid #ccc;
     border-radius: 6px;
 }
-
+/* Product information styles.*/
 .product-info {
     max-width: 500px;
 }
@@ -164,7 +164,7 @@ footer {
 .product-info form {
     margin-top: 1.5rem;
 }
-
+/* Add some spacing between the input fields and the buttons */
 .product-info input[type="number"] {
     width: 60px;
     padding: 0.4rem;
@@ -182,6 +182,7 @@ footer {
 .product-info button:hover {
     background-color: #1d4ed8;
 }
+/* Styling for the cart table when the user views the cart. Make the table responsive and add some spacing between the table cells */
 .cart-table {
     width: 100%;
     border-collapse: collapse;
@@ -199,6 +200,8 @@ footer {
     background-color: #f1f5f9;
 }
 
+/* Styling for the checkout button. Make sure the button is centered and has a hover effect, along with a different color */
+.cart-table td
 .checkout-button {
     display: inline-block;
     margin-top: 1.5rem;
@@ -209,7 +212,7 @@ footer {
     border-radius: 4px;
     font-weight: bold;
 }
-
+/* When user hovers over the checkout button, change the background color to a darker shade. */
 .checkout-button:hover {
     background-color: #16a34a;
 }
@@ -224,3 +227,173 @@ footer {
     border-radius: 4px;
     font-weight: bold;
 }
+
+/* Styling for products when shown to the admin on the admin page */
+.admin-layout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    gap: 2rem;
+}
+
+/* Styling for the the about section of the website. Make sure the container is centered and has a padding for better readability */
+.about-section {
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    text-align: left;
+}
+/* Set the styling for both first and second headings in the About section */
+.about-section h1, .about-section h2 {
+    color: #333;
+    text-align: center;
+}
+
+.about-section p {
+    font-size: 18px;
+    color: #666;
+    line-height: 1.6;  
+    text-align: justify;  /* This will align the text to the left */
+}
+
+/* Styling for About Me Section's container*/
+.about-me-container {
+    display: flex;   
+    align-items: center;  
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+/* Styling for the support section of the website.*/
+.support-msg-container {
+    background-color: #f8f8f8;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    width: 100%;
+}
+
+/* Styling for the form within the support section. */
+.support-msg-container form textarea {
+    width: 100%;
+    min-height: 120px;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    padding: 0.75rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+}
+
+.support-msg-container form label {
+    display: block;  /* This will make the label appear as a block element so that it takes up the full width */
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+/* Help Center styles */
+.help-center {
+    padding: 2rem;
+    text-align: center;
+    background-color: #f8f9fa;
+}
+
+.help-center h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.help-center p {
+    color: #666;
+    margin-bottom: 2rem;
+}
+
+/* Help links container. Use flexbox to center the links horizontally. */
+.help-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+/* Help box container. Use transition to create a smooth transition effect when hovering over the help box along with a box shadow effect */
+.help-box {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    width: 250px;
+    padding: 1.5rem;
+    text-decoration: none; 
+    color: #333;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+/* Push the help box up a bit when hovering over it */
+.help-box:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.help-box h2 {
+    margin-bottom: 0.5rem;
+    font-size: 1.25rem;
+    color: #007bff;
+}
+
+.help-box p {
+    font-size: 0.95rem;
+    color: #555;
+}
+/* Buying Guide Main Container */
+.buying-guide-container {
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 25px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+}
+
+/* Heading styles - consistent with about/help pages */
+.buying-guide-container h1,
+.buying-guide-container h2 {
+    color: #333;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+
+.buying-guide-container p {
+    font-size: 17px;
+    color: #555;
+    line-height: 1.6;
+    text-align: justify;
+    margin-bottom: 1rem;
+}
+
+/* Styles for the video in the buying guide section */
+.guide-section {
+    background-color: #f9f9f9;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-left: 4px solid #007bff;
+    border-radius: 8px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease; /* Add a smooth transition effect when hovering over the section */
+}
+
+/* Move the video up when hovered */
+.guide-section:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+}
+

@@ -20,9 +20,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
     // If the user exists and the password matches, set the session variables 
     if ($user && password_verify($password, $user["password_hash"])){
         $_SESSION["user"] = [
-            'id' => $user["id"],
-            'username' => $user["username"],
-            'email' => $user["email"],
+            'id' => $user['id'],
+            'username' => $user['username'],
+            'email' => $user['email'],
+            'role' => $user['role'], // To check if admin or user
 
         ];
         // Now, Re-direct the user to the originally intended page (or home page if none is set)
@@ -45,7 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
     <p style="color: red;"><?php echo htmlspecialchars($error); ?></p>
     <?php endif; ?>
     
-    <!-- Login form -->
+    <!-- Login form using the post method -->
     <form action="login.php" method="post">
         <h1>Log In</h1>
         <label for="email">Email:</label><br>

@@ -19,7 +19,7 @@
                 $stmt = $pdo->prepare("SELECT * FROM products WHERE category_id = ?");
                 $stmt->execute([$category['id']]);
 
-                // Display products for this category
+                // Display products for this category and wrap it in a product card. This will dynamically populate every product meaning less code 
                 while ($product = $stmt->fetch()):
                 ?>
                     <div class="product-card">
