@@ -45,7 +45,7 @@ When viewing your admin dashboard, you can look at all of the products in the da
 Everything is simple until you get to the add products part
 To add a product, I currently only have it so that only one option can be added for one product
 Fill in all of the required options for adding the product
-I have added an image called 'product-test.jpg' which is already included in assets/images. 
+I have added a test image for a RAM product called 'product-test.jpg' which is already included in assets/images to use 
 IMPORTANT: You must upload new photos into assets/images and copy/paste the relative path into the form when adding a product
 
 You can add new help pages in help-section/ and Orders are tracked in orders and order_items tables
