@@ -36,13 +36,18 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <html lang="en">
 <html>
     <body>
-        <!-- Add a new product form -->
-        <h2>Add Product</h2>
-        <?php if ($error) echo "<p style='color:red;'>$error</p>"; ?>
-        <?php if ($success) echo "<p style='color:green;'>$success</p>"; ?>
+        <!-- Check if there was an error or success message -->
+        <h2 style="text-align: center;">Add Product</h2>
+        <?php if ($error){
+            echo "<p style='color:red;'>$error</p>";
+        }?>
+        <?php if ($success){
+            echo "<p style='color:green;'>$success</p>";
+        }?>
 
+        <!-- Add a new product form -->
         <!-- Make sure the form method is set to "post" -->
-        <form method="post">
+        <form method="post" class="buying-guide-container">
             <label>Name:</label><br>
             <input type="text" name="name" required><br><br>
 
@@ -65,8 +70,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             <i>1=CPU, 2=GPU, 3=RAM, 4=SSD, 5=PSU, 6=MOTHERBOARD, 7=CASE</i>
             <br><br>
 
-            <button type="submit">Add Product</button>
+            <button class="button" type="submit">Add Product</button>
         </form>
-    </body>
 
-<?php require_once '../other/footer.php'; ?>
+        <footer><p>&copy; 2025  Amer's PC Builder Store. All rights reserved.</p></footer>
+    </body>

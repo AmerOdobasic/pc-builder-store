@@ -76,35 +76,43 @@ $total = 0;
     $total += $subtotal;
 
 ?>
-<!-- Now, output the table row for each product in the cart -->
-<tr>
-    <td>
-        <?php echo htmlspecialchars($name); ?>
-        <!-- If there are selected options, display them -->
-        <?php if (!empty($selected_options)): ?>
-            <ul class="cart-options">
-            <?php foreach ($selected_options as $key => $value): ?>
-                <li><?php echo htmlspecialchars($key . ": " . $value); ?></li>
-            <?php endforeach; ?>
-            </ul>
-        <?php endif; ?>
-    </td>
-    <!-- Display price and quantity and subtotal -->
-    <td>$<?php echo number_format($price, 2); ?></td>
-    <td><?php echo $qty; ?></td>
-    <td>$<?php echo number_format($subtotal, 2); ?></td>
-    <!-- Add a button to remove the product from the cart -->
-    <td>
-        <form action="remove-from-cart.php" method="post">
-            <input type="hidden" name="product_id" value="<?php echo $pid; ?>">
-            <button type="submit">Remove</button>
-        </form>
-    </td>
-</tr>
-<?php endforeach; ?>
-</table>
-<!-- Display the total -->
-<h3>Total: $<?php echo number_format($total, 2); ?></h3>
-<a href="checkout.php" class="checkout-button">Proceed to Checkout</a>
+<!DOCTYPE html>
+<html lang="en">
 
-<?php require_once 'other/footer.php'; ?>
+<body>
+    <!-- Now, output the table row for each product in the cart -->
+    <tr>
+        <td>
+            <?php echo htmlspecialchars($name); ?>
+            <!-- If there are selected options, display them -->
+            <?php if (!empty($selected_options)): ?>
+                <ul class="cart-options">
+                <!-- In order to go through them, foreach will loop through the key and value pairs from the option array (eg. option_name => option_value) -->
+                <?php foreach ($selected_options as $key => $value): ?>
+                    <li><?php echo htmlspecialchars($key . ": " . $value); ?></li>
+                <?php endforeach; ?>
+                </ul>
+            <?php endif; ?>
+        </td>
+        <!-- Display price and quantity and subtotal -->
+        <td>$<?php echo number_format($price, 2); ?></td>
+        <td><?php echo $qty; ?></td>
+        <td>$<?php echo number_format($subtotal, 2); ?></td>
+        <!-- Add a button to remove the product from the cart -->
+        <td>
+            <form action="remove-from-cart.php" method="post">
+                <input type="hidden" name="product_id" value="<?php echo $pid; ?>">
+                <button class="button" type="submit">Remove</button>
+            </form>
+        </td>
+    </tr>
+    <?php endforeach; ?>
+    </table>
+    <!-- Display the total -->
+    <h3>Total: $<?php echo number_format($total, 2); ?></h3>
+    <a href="checkout.php" class="button" style="margin-bottom:1rem;">Proceed to Checkout</a>
+
+    <footer><p>&copy; 2025  Amer's PC Builder Store. All rights reserved.</p></footer>
+</body>
+</html>
+

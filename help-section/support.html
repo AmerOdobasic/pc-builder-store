@@ -7,6 +7,8 @@
     <meta name="description" content="Amer's PC Builder Store. It contains a wide range of high-quality PC components and accessories for people of all skill levels of PC building.">
     <meta name="keywords" content="Amer's PC Builder Store, PC Components, PC Accessories, PC Building, High-quality PC components, Affordable PC accessories, viral, tech, coding, html, JS">
     <link rel="stylesheet" href="/pc-builder-store/assets/css/styles.css">
+    <script src="/pc-builder-store/assets/js/main.js" defer></script>
+
 </head>
 <body>
     <header>
@@ -21,14 +23,14 @@
     <!-- Showcase where the user can submit info for a question. Info about the user will be sent via POST -->
     <main class="buying-guide-container">
         <h1>Contact Support</h1>
-        <p>If you're experiencing issues or have questions, please fill out the form below.</p>
+        <p style="text-align: center;">If you're experiencing issues or have questions, please fill out the form below.</p>
 
         <form action="../submit-support.php" method="post" class="support-form">
             <label>Name:<br><input type="text" name="name" required></label><br><br>
             <label>Email:<br><input type="email" name="email" required></label><br><br>
             <label>Subject:<br><input type="text" name="subject" required></label><br><br>
             <label>Message:<br><textarea name="message" required></textarea></label><br><br>
-            <button type="submit">Send Message</button>
+            <button class="button" type="submit">Send Message</button>
         </form>
     </main>
 

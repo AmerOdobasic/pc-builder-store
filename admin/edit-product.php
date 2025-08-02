@@ -54,8 +54,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <h2>Edit Product</h2>
 
         <!-- Check to see if there is an error or success message to display-->
-        <?php if ($error) echo "<p style='color:red;'>$error</p>"; ?>
-        <?php if ($success) echo "<p style='color:green;'>$success</p>"; ?>
+        <?php if ($error){
+            echo "<p style='color:red;'>$error</p>";
+        }?>
+        <?php if ($success){
+            echo "<p style='color:green;'>$success</p>";
+        }?>
 
         <!-- Display the form to edit the product -->
         <form method="post">
@@ -82,7 +86,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             <button type="submit">Update Product</button>
         </form>
+        <footer><p>&copy; 2025  Amer's PC Builder Store. All rights reserved.</p></footer>
     </body>
 </html>
 
-<?php require_once '../other/footer.php'; ?>

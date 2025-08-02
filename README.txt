@@ -1,3 +1,5 @@
+PART 1: SETTING UP REPO
+
 (Note that this is my first submission and things will be changing in this read me file)
 
 Github repo link: https://github.com/AmerOdobasic/pc-builder-store/tree/master
@@ -41,16 +43,13 @@ The Email for the admin = admin@gmail.com and the password = 'password' (most st
 - For the user account, the email = user@gmail.com and password = 'abcd123'
 
 ADDING PRODUCTS 
-When viewing your admin dashboard, you can look at all of the products in the database. You can either add, delete or even edit them
-Everything is simple until you get to the add products part
-To add a product, I currently only have it so that only one option can be added for one product
+When viewing your admin dashboard, you can look at all of the products in the database, and you can either add, delete, edit, or view orders.
+Everything is simple for you until you get to the 'add products' part
 Fill in all of the required options for adding the product
-I have added a test image for a RAM product called 'product-test.jpg' which is already included in assets/images to use 
+I have added 2 test images called 'product-test.jpg' and 'product-test2.jpg' which is already included in assets/images to use 
 IMPORTANT: You must upload new photos into assets/images and copy/paste the relative path into the form when adding a product
 
-You can add new help pages in help-section/ and Orders are tracked in orders and order_items tables
+Also in the admin dashboard, you can also view all of the orders that have been placed. You can view the order details and the order status and change the status of the order. 
+If you look at the header, you also can view the responses sent from people who need help/contacted support. The response will be sent to the server along with the time of the response.
 
-Since I have time to update the website more, I will be possibly adding a way for the admin to track the orders made from customers and i will be adding a themes charger to the admin portion aswell along with better mobile support
-
-My URL for the website 
 If you have any problems trying to run my project, please let me know as soon as possible at my email odobasia@uwindsor.ca 

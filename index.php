@@ -5,6 +5,16 @@
 <html lang="en">
 <html>
 <body>
+    <!-- Theme selector container -->
+    <!-- This will display the theme selector dropdown when the user clicks on it -->
+    <div class="theme-selector-container">
+        <select id="theme-selector">
+            <option value="default">Default (Light)</option>
+            <option value="winter">Winter</option>
+            <option value="spring">Spring</option>
+          </select>
+    </div> 
+    
     <h1>Welcome to Amer's PC Builder Store</h1>
 
     <h2>Featured Products</h2>
@@ -32,6 +42,10 @@
         <iframe width="560" height="315" src="https://www.youtube.com/embed/oXM_7dSlbv0?si=pmMLNCc3ek__WX1v" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
     </div>
 
-    <footer><?php require_once 'other/footer.php'; ?></footer>
+    <div class="video-container">
+        <h2>View our location!</h2>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d877.6591721859722!2d-82.97808135461125!3d42.27677704759096!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sca!4v1754103497588!5m2!1sen!2sca" width="1000" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+    <footer><p>&copy; 2025  Amer's PC Builder Store. All rights reserved.</p></footer>
 </body>
 </html>

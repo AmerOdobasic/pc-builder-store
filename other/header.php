@@ -34,7 +34,7 @@ if (session_status() === PHP_SESSION_NONE) {
 
         <!-- User links only for logged-in users -->
         <?php if (isset($_SESSION['user'])): ?>
-            <a style="margin-left: 150px;">Welcome, <?php echo htmlspecialchars($_SESSION['user']['username']); ?></a>
+            <a style="margin-left: 5rem;">Welcome, <?php echo htmlspecialchars($_SESSION['user']['username']); ?></a>
             <a href="/pc-builder-store/logout.php">Logout</a>
         <?php else: ?>
             <a href="/pc-builder-store/login.php">Login</a>

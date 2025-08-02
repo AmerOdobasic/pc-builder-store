@@ -31,24 +31,7 @@ if (!empty($product_ids)) {
 } else {  // If no product IDs, create an empty array
     $products = [];
 }
-?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-</head>
-<body>
-    <!-- Set up the form to place an order -->
-    <form method="post">
-    <label>Shipping Address:</label><br>
-    <textarea name="address" required></textarea><br><br>
-    <button type="submit" name="place_order">Place Order</button>
-    </form>
 
-    <footer><?php require_once 'other/footer.php'; ?></footer>
-</body>
-
-<?php
 // Check if the form was submitted by the POST method from the user and if user specifically clicked the "Place Order" button
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['place_order'])) {
     // Set up variables for the user and address
@@ -130,5 +113,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['place_order'])) {
     header("Location: thank-you.php?order_id=$order_id");
     exit;
 }
-
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<body>
+    <main class="buying-guide-container">
+        <!-- Set up the form to place an order -->
+        <form method="post">
+        <label>Shipping Address:</label><br>
+        <textarea name="address" required></textarea><br><br>
+        <button type="submit" class="button" name="place_order">Place Order</button>
+        </form>
+    </main>
+    <footer><p>&copy; 2025  Amer's PC Builder Store. All rights reserved.</p></footer>
+</body>

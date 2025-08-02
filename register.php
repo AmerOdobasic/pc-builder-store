@@ -41,19 +41,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["username"], $_POST["pa
 <!DOCTYPE html>
 <html lang="en">
 <body>
-    <!-- Register Form -->
-    <form action="register.php" method="post">
-        <h1>Register</h1>
-        <input type="text" name="username" placeholder="Username" required>
-        <input type="password" name="password" placeholder="Password" required>
-        <input type="text" name="email" placeholder="person@example.com" required>
-        <input type="submit" value="Register"> 
-        <a href="login.php">Already have an account?</a>
+    <main class="buying-guide-container">
+        <!-- Register Form -->
+        <form action="register.php" method="post">
+            <h1>Register</h1>
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <input type="text" name="email" placeholder="person@example.com" required>
+            <input class="button" type="submit" value="Register"> 
+        </form>
 
-    </form>
+        <!-- Login Link -->
+        <div class="center-block">
+            <a class="button" href="login.php">Already have an account?</a>
+        </div>
+    </main>
 
-    <footer>
-        <?php require_once 'other/footer.php'; ?>
-    </footer>
+    <footer><p>&copy; 2025  Amer's PC Builder Store. All rights reserved.</p></footer>
 </body>
 </html>

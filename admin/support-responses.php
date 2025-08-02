@@ -58,6 +58,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['clear_data'])) {
         </form>
     </main>
 
-<?php require_once '../other/footer.php'; ?>
+    <footer><p>&copy; 2025  Amer's PC Builder Store. All rights reserved.</p></footer>
 </body>
 </html>

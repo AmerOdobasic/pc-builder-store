@@ -41,26 +41,31 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
 <!DOCTYPE html>
 <html lang="en">
 <body>
-    <!-- Error message in case of an error -->
-    <?php if ($error): ?>
-    <p style="color: red;"><?php echo htmlspecialchars($error); ?></p>
-    <?php endif; ?>
-    
-    <!-- Login form using the post method -->
-    <form action="login.php" method="post">
-        <h1>Log In</h1>
-        <label for="email">Email:</label><br>
-        <input type="text" id="email" name="email" required><br>
-        <label for="password">Password:</label><br>
-        <input type="password" id="password" name="password" required><br>
-        <input type="submit" value="Login">
+    <main class="buying-guide-container">
+        <!-- Error message in case of an error -->
+        <?php if ($error): ?>
+        <p style="color: red;"><?php echo htmlspecialchars($error); ?></p>
+        <?php endif; ?>
+        
+        <!-- Login form using the post method -->
+        <form action="login.php" method="post" >
+            <h1>Log In</h1>
+            <label for="email">Email:</label><br>
+            <input type="text" id="email" name="email" required><br>
+            <label for="password">Password:</label><br>
+            <input type="password" id="password" name="password" required><br>
+            <input class="button" type="submit" value="Login">
 
-    </form>
+        </form>
 
-    <p>Don't have an account? <a href="register.php">Register here</a></p>
+        <!-- Registration link -->
+        <div class="center-block">
+            <p>Don't have an account? <a class="button" href="register.php">Register here</a></p>
+        </div>
 
-    <footer>
-        <?php require_once 'other/footer.php'; ?>
-    </footer>
+
+    </main>
+
+    <footer><p>&copy; 2025  Amer's PC Builder Store. All rights reserved.</p></footer>
 </body>
 </html>

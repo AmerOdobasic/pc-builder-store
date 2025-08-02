@@ -20,11 +20,11 @@ $products = $stmt->fetchAll();
 <html lang="en">
 <body>
     <!-- Showcase the admin dashboard -->
-    <div class="admin-layout">
+    <div class="admin-layout cart-table">
         <h1>Admin Dashboard</h1>
-
-        <!-- Add a link to the add-product.php page to add a new product -->
-        <a href="add-product.php">Add Product</a>
+        <!-- Add a link to the add-product.php page to add a new product or orders.php to view orders -->
+        <a class="button" style="margin-top: -1rem" href="add-product.php">Add Product</a>
+        <a class="button" style="margin-top: -1rem" href="orders.php">View Orders</a><br>
         <table>
             <tr>
                 <th>Name</th>
@@ -40,9 +40,9 @@ $products = $stmt->fetchAll();
                 <td><?= $product['stock'] ?></td>
                 <td><?= $product['category_id'] ?></td>
                 <td>
-                    <a href="edit-product.php?id=<?= $product['id'] ?>">Edit</a> 
+                    <a button="button" href="edit-product.php?id=<?= $product['id'] ?>">Edit</a> 
                     <!-- Confirm with the user before deleting a product -->
-                    <a href="delete-product.php?id=<?= $product['id'] ?>" onclick="return confirm('Are you sure you want to delete this product?')">Delete</a>
+                    <a button="button" href="delete-product.php?id=<?= $product['id'] ?>" onclick="return confirm('Are you sure you want to delete this product?')">Delete</a>
                         
                 </td>
             </tr>
@@ -50,8 +50,6 @@ $products = $stmt->fetchAll();
         </table>
     </div>
 
-    <footer>
-        <?php require_once '../other/footer.php'; ?>
-    </footer>
+    <footer><p>&copy; 2025  Amer's PC Builder Store. All rights reserved.</p></footer>
 </body>
 </html>

@@ -90,5 +90,5 @@ foreach ($optionsRaw as $opt) {
     </div>
 </body>
 
-<footer><?php require_once 'other/footer.php'; ?></footer>
+<footer><p>&copy; 2025  Amer's PC Builder Store. All rights reserved.</p></footer>
 </html>

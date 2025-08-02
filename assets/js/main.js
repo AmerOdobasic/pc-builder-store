@@ -29,4 +29,50 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
     });
+
+    // For the theme selector
+    const themeSelector = document.getElementById("theme-selector"); // Get the theme selector element
+
+    // Define the theme colors
+    const themes = {
+        default: { "--bg-color": "#ffffff", "--text-color": "#000000" }, // Basic default
+        winter: { "--bg-color": "#f0f8ff", "--text-color": "#1e3a8a" },
+        spring: { "--bg-color": "#a8e6cf", "--text-color": "#34495e" },
+        
+    };
+
+    // Check if the user select the default theme, and if so, clear the theme
+    function applyTheme(themeName) {
+        if (themeName === "default") {
+            clearTheme();
+            return;
+        }
+        // Otherwise, apply the theme based on the selected theme name
+        const theme = themes[themeName] || themes[getAutomaticTheme()]; 
+        // Apply the theme by setting the CSS variables for the background and text colors
+        Object.keys(theme).forEach((key) => { // Loop through each key (CSS variable) and then sets the respective property's 
+            document.documentElement.style.setProperty(key, theme[key]);  
+        });
+    }
+
+    // This is used to get the theme from the local storage and apply it to the page (to make sure the theme is applied when the page refreshes)
+    const savedTheme = localStorage.getItem("selectedTheme") || "auto"; // Gets the theme from the local storage
+    applyTheme(savedTheme === "auto" ? getAutomaticTheme() : savedTheme); 
+
+    // Set up theme selector change to handle theme selection only if it exists on the page
+    if (themeSelector) {
+        themeSelector.value = savedTheme;  // Sets the selected theme to the one saved in the local storage
+
+        // Update theme whenever user changes selection
+        themeSelector.addEventListener("change", function () {
+            const selectedTheme = themeSelector.value; // Gets the selected theme
+            localStorage.setItem("selectedTheme", selectedTheme); // Make sure to save the selected theme in the local storage so the theme is applied when the page refreshes
+            applyTheme(selectedTheme);  // Apply the selected theme
+        });
+    }
+    // The function will clear the theme by removing the CSS variables for background and text colors
+    function clearTheme() {
+        document.documentElement.style.removeProperty("--bg-color");
+        document.documentElement.style.removeProperty("--text-color");
+    }
 });
