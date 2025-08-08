@@ -23,14 +23,18 @@ $products = $stmt->fetchAll();
     <div class="admin-layout cart-table">
         <h1>Admin Dashboard</h1>
         <!-- Add a link to the add-product.php page to add a new product or orders.php to view orders -->
-        <a class="button" style="margin-top: -1rem" href="add-product.php">Add Product</a>
-        <a class="button" style="margin-top: -1rem" href="orders.php">View Orders</a><br>
+        <div class="button-wrapper">
+            <a class="button" style="margin-top: -1rem" href="add-product.php">Add Product</a>
+            <a class="button" style="margin-top: -1rem" href="orders.php">View Orders</a><br>
+        </div>
         <table>
             <tr>
                 <th>Name</th>
                 <th>Price</th>
                 <th>Stock</th>
                 <th>Category</th>
+                <th></th>
+                <th></th>
             </tr>
             <!-- Display all products by looping through the $products array -->
             <?php foreach ($products as $product) : ?>
@@ -39,11 +43,10 @@ $products = $stmt->fetchAll();
                 <td>$<?= number_format($product['price'], 2) ?></td>
                 <td><?= $product['stock'] ?></td>
                 <td><?= $product['category_id'] ?></td>
-                <td>
-                    <a button="button" href="edit-product.php?id=<?= $product['id'] ?>">Edit</a> 
+                <td><a class="button" href="edit-product.php?id=<?= $product['id'] ?>">Edit</a></td>
+                <td>    
                     <!-- Confirm with the user before deleting a product -->
-                    <a button="button" href="delete-product.php?id=<?= $product['id'] ?>" onclick="return confirm('Are you sure you want to delete this product?')">Delete</a>
-                        
+                    <a class="button" href="delete-product.php?id=<?= $product['id'] ?>" onclick="return confirm('Are you sure you want to delete this product?')">Delete</a>    
                 </td>
             </tr>
         <?php endforeach; ?>

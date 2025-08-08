@@ -55,8 +55,6 @@ foreach ($optionsRaw as $opt) {
 
             <form action="add-to-cart.php" method="post">
                 <input type="hidden" name="product_id" value="<?php echo $product['id']; ?>">
-                
-                <label>Options:</label>
                 <!-- For each option, we'll create a select box with the options for each product -->
                 <!-- Loop through the names of the grouped options -->
                 <?php foreach ($groupedOptions as $name => $optionSet): ?>
@@ -64,11 +62,11 @@ foreach ($optionsRaw as $opt) {
                     <label><?php echo htmlspecialchars($name); ?>:</label>
                     <!-- This will create a <select> Dropdown to display the options for the current option group -->
                     <select name="options[<?php echo $name; ?>]" class="option-select">
-                        <!-- Loop through the options for the current option group -->
+                        <!-- Loop through the options-->
                         <?php foreach ($optionSet as $opt): ?>
                             <option
                                 value="<?php echo htmlspecialchars($opt['option_value']); ?>"
-                                data-img="<?php echo $opt['image_url']; ?>"
+                                data-image="<?php echo $opt['image_url']; ?>"
                                 data-price="<?php echo $opt['override_price']; ?>"
                                 data-name="<?php echo htmlspecialchars($opt['override_name']); ?>"
                             >

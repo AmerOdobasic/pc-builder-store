@@ -11,7 +11,7 @@
         <select id="theme-selector">
             <option value="default">Default (Light)</option>
             <option value="winter">Winter</option>
-            <option value="spring">Spring</option>
+            <option value="minty">Minty</option>
           </select>
     </div> 
     
@@ -23,7 +23,7 @@
         <?php
         // Grab the first 3 products from the db
         $stmt = $pdo->query("SELECT * FROM products LIMIT 3");
-        // Loop through each product and dyamiclly add them onto thw webpage, along with the respective image, name, and product id which will be used to access the product detail
+        // Loop through each product and dynamically add them onto thw webpage, along with the respective image, name, and product id which will be used to access the product detail
         while ($product = $stmt->fetch()):
         ?>
             <div class="product-card">
@@ -42,8 +42,9 @@
         <iframe width="560" height="315" src="https://www.youtube.com/embed/oXM_7dSlbv0?si=pmMLNCc3ek__WX1v" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
     </div>
 
+    <!-- Showcase an interactive map  -->
     <div class="video-container">
-        <h2>View our location!</h2>
+        <h2>View our location in Windsor, ON</h2>
         <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d877.6591721859722!2d-82.97808135461125!3d42.27677704759096!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sca!4v1754103497588!5m2!1sen!2sca" width="1000" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
     <footer><p>&copy; 2025  Amer's PC Builder Store. All rights reserved.</p></footer>

@@ -45,13 +45,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["username"], $_POST["pa
         <!-- Register Form -->
         <form action="register.php" method="post">
             <h1>Register</h1>
+            <label for="username">Username:</label>
             <input type="text" name="username" placeholder="Username" required>
+            <label for="password">Password:</label>
             <input type="password" name="password" placeholder="Password" required>
+            <label for="email">Email:</label>
             <input type="text" name="email" placeholder="person@example.com" required>
             <input class="button" type="submit" value="Register"> 
         </form>
 
-        <!-- Login Link -->
+        <!-- Login Link for the user -->
         <div class="center-block">
             <a class="button" href="login.php">Already have an account?</a>
         </div>

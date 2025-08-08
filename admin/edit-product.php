@@ -51,41 +51,43 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <html lang="en">
 <html>
     <body>
-        <h2>Edit Product</h2>
+        <main class="buying-guide-container">
+            <h2>Edit Product</h2>
 
-        <!-- Check to see if there is an error or success message to display-->
-        <?php if ($error){
-            echo "<p style='color:red;'>$error</p>";
-        }?>
-        <?php if ($success){
-            echo "<p style='color:green;'>$success</p>";
-        }?>
+            <!-- Check to see if there is an error or success message to display-->
+            <?php if ($error){
+                echo "<p style='color:red;'>$error</p>";
+            }?>
+            <?php if ($success){
+                echo "<p style='color:green;'>$success</p>";
+            }?>
 
-        <!-- Display the form to edit the product -->
-        <form method="post">
-            <label>Name:</label><br>
-            <input type="text" name="name" value="<?php echo htmlspecialchars($product['name']); ?>" required><br><br>
+            <!-- Display the form to edit the product -->
+            <form method="post">
+                <label>Name:</label><br>
+                <input type="text" name="name" value="<?php echo htmlspecialchars($product['name']); ?>" required><br><br>
 
-            <label>Price:</label><br>
-            <input type="number" name="price" step="0.01" value="<?php echo htmlspecialchars($product['price']); ?>" required><br><br>
+                <label>Price:</label><br>
+                <input type="number" name="price" step="0.01" value="<?php echo htmlspecialchars($product['price']); ?>" required><br><br>
 
-            <label>Description:</label><br>
-            <textarea name="description" required><?php echo htmlspecialchars($product['description']); ?></textarea><br><br>
+                <label>Description:</label><br>
+                <textarea name="description" required><?php echo htmlspecialchars($product['description']); ?></textarea><br><br>
 
-            <label>Stock:</label><br>
-            <input type="number" name="stock" value="<?php echo (int)$product['stock']; ?>" required><br><br>
+                <label>Stock:</label><br>
+                <input type="number" name="stock" value="<?php echo (int)$product['stock']; ?>" required><br><br>
 
-            <label>Image URL:</label><br>
-            <input type="text" name="image_url" value="<?php echo htmlspecialchars($product['image_url']); ?>" required><br><br>
+                <label>Image URL:</label><br>
+                <input type="text" name="image_url" value="<?php echo htmlspecialchars($product['image_url']); ?>" required><br><br>
 
-            <label>Category ID:</label><br>
-            <input type="number" name="category_id" value="<?php echo (int)$product['category_id']; ?>" required><br>
-            <!-- Display a list of categories to help the admin select a category -->
-            <i>1=CPU, 2=GPU, 3=RAM, 4=SSD, 5=PSU, 6=MOTHERBOARD, 7=CASE</i>
-            <br><br>
+                <label>Category ID:</label><br>
+                <input type="number" name="category_id" value="<?php echo (int)$product['category_id']; ?>" required><br>
+                <!-- Display a list of categories to help the admin select a category -->
+                <i>1=CPU, 2=GPU, 3=RAM, 4=SSD, 5=PSU, 6=MOTHERBOARD, 7=CASE</i>
+                <br><br>
 
-            <button type="submit">Update Product</button>
-        </form>
+                <button class="button" type="submit">Update Product</button>
+            </form>
+        </main>
         <footer><p>&copy; 2025  Amer's PC Builder Store. All rights reserved.</p></footer>
     </body>
 </html>

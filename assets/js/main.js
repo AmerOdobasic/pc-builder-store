@@ -13,66 +13,107 @@ document.addEventListener("DOMContentLoaded", function () {
             }
 
             // Get custom data attributes from the selected option
-            const newImg = selectedOption.dataset.img;
+            const newImg = selectedOption.dataset.image;
             const newPrice = selectedOption.dataset.price;
             const newName = selectedOption.dataset.name;
 
             // Update the image, price, and name of the product if the custom data attributes exist
-            if (newImg) {
-                    document.getElementById('product-image').src = newImg;
-                }
-            if (newPrice) {
-                document.getElementById('product-price').textContent = parseFloat(newPrice);
+            const productImage = document.getElementById('product-image');
+
+            // Check if there is a new image and if there is an image at all
+            if (newImg && productImage) {
+                // Fade out each image for a smooth transition between images
+                productImage.style.opacity = 0;
+
+                // After fade out duration, change the src and fade back in
+                setTimeout(() => {
+                    productImage.src = newImg;
+                    productImage.style.opacity = 1;
+                }, 250); // Set the transition duration to 250 milliseconds
             }
-            if (newName) {
-                document.getElementById('product-name').textContent = newName;
+
+            // Check if there is a new price and if there is a price at all
+            // We need to update the price of the new option and convert it to a number since it is a string by default
+            if (newPrice && productPrice) {
+                productPrice.textContent = parseFloat(newPrice);
+            }
+
+            // Now lets update the name of the product 
+            if (newName && productName) {
+                productName.textContent = newName;
             }
         });
     });
 
     // For the theme selector
-    const themeSelector = document.getElementById("theme-selector"); // Get the theme selector element
+    // We need to grab the theme selector element and the theme names from the HTML back in index.php
+    const themeSelector = document.getElementById("theme-selector");
 
-    // Define the theme colors
+    // Define an object with theme names and their corresponding CSS variables that will be applied to the theme selector
     const themes = {
-        default: { "--bg-color": "#ffffff", "--text-color": "#000000" }, // Basic default
+        default: { "--bg-color": "", "--text-color": "" },
         winter: { "--bg-color": "#f0f8ff", "--text-color": "#1e3a8a" },
-        spring: { "--bg-color": "#a8e6cf", "--text-color": "#34495e" },
-        
+        minty: { "--bg-color": "#a8e6cf", "--text-color": "#34495e" },
     };
 
-    // Check if the user select the default theme, and if so, clear the theme
+    // Function to apply the selected theme to the page
     function applyTheme(themeName) {
-        if (themeName === "default") {
-            clearTheme();
+        // Set the selected theme as the active theme
+        const theme = themes[themeName];
+        // Check to see if the theme exists, if not, exit
+        if (!theme){
+            return
+        };
+        // Set the CSS variables for the page by going through each key-value pair in the theme object and set the CSS property to the value
+        Object.entries(theme).forEach(([key, value]) => {
+            document.documentElement.style.setProperty(key, value);
+        });
+    }
+
+    // Make sure to get the saved theme from local storage and apply it to the theme selector in case the user has a saved theme already
+    const savedTheme = localStorage.getItem("selectedTheme") || "default";
+    applyTheme(savedTheme);
+
+    // A function that checks if the theme selector exists and if it does...
+    if (themeSelector) {
+        // Set the theme selector value to the saved theme from local storage
+        themeSelector.value = savedTheme;
+        // Add an event listener to the theme selector that fires when the user changes the selected theme
+        themeSelector.addEventListener("change", () => {
+            const selectedTheme = themeSelector.value;
+            // Make sure that the selected theme gets added to local storage
+            localStorage.setItem("selectedTheme", selectedTheme);
+            applyTheme(selectedTheme);
+        });
+    }
+
+    // For the delete button when viewing order details 
+    // Grab the status select and delete button elements
+    const statusSelect = document.getElementById('statusSelect');
+    const deleteBtn = document.getElementById('deleteButton');
+
+    // Function to toggle the visibility of the delete button based on the selected status. 
+    // We want the button to show when the status is 'Cancelled'
+    // and hide when the status is anything else
+
+    // If the status select or delete button doesn't exist, exit the function
+    function toggleDeleteButton() {
+        if (!statusSelect || !deleteBtn) {
             return;
         }
-        // Otherwise, apply the theme based on the selected theme name
-        const theme = themes[themeName] || themes[getAutomaticTheme()]; 
-        // Apply the theme by setting the CSS variables for the background and text colors
-        Object.keys(theme).forEach((key) => { // Loop through each key (CSS variable) and then sets the respective property's 
-            document.documentElement.style.setProperty(key, theme[key]);  
-        });
+        // Check the status select value and show or hide the delete button accordingly
+        if (statusSelect.value === 'Cancelled') {
+            deleteBtn.classList.add('visible');
+        } else {
+            deleteBtn.classList.remove('visible');
+        }
     }
 
-    // This is used to get the theme from the local storage and apply it to the page (to make sure the theme is applied when the page refreshes)
-    const savedTheme = localStorage.getItem("selectedTheme") || "auto"; // Gets the theme from the local storage
-    applyTheme(savedTheme === "auto" ? getAutomaticTheme() : savedTheme); 
+    // Initial check
+    toggleDeleteButton();
 
-    // Set up theme selector change to handle theme selection only if it exists on the page
-    if (themeSelector) {
-        themeSelector.value = savedTheme;  // Sets the selected theme to the one saved in the local storage
+    // Listen for changes
+    statusSelect.addEventListener('change', toggleDeleteButton);
 
-        // Update theme whenever user changes selection
-        themeSelector.addEventListener("change", function () {
-            const selectedTheme = themeSelector.value; // Gets the selected theme
-            localStorage.setItem("selectedTheme", selectedTheme); // Make sure to save the selected theme in the local storage so the theme is applied when the page refreshes
-            applyTheme(selectedTheme);  // Apply the selected theme
-        });
-    }
-    // The function will clear the theme by removing the CSS variables for background and text colors
-    function clearTheme() {
-        document.documentElement.style.removeProperty("--bg-color");
-        document.documentElement.style.removeProperty("--text-color");
-    }
+
 });

@@ -25,27 +25,25 @@ body {
 }   
 /* Add a hover effect to the selector */
 #theme-selector {
-  padding: 10px 20px;
-  border-radius: 8px;
-  border: 2px solid #ccc;
-  background-color: #f7f7f7;
-  font-size: 16px;
-  color: #333;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
+    width: auto;             /* Prevent full width */
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: 2px solid #ccc;
+    background-color: #f7f7f7;
+    font-size: 16px;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    }
 
 #theme-selector:hover {
     border-color: #999; 
     box-shadow: 0 4px 10px rgba(0,0,0,0.15); 
     cursor: pointer; /* Add a pointer cursor to indicate that it's clickable */
 }
-/* Add styles for the options in the theme selector */
 .theme-selector-container {
-    display: flex;  /* This makes the container a flex container for better alignment */
-    flex-direction: column;  /* This makes the options in the selector a column */
-    align-items: center;  /* This aligns the selector to be in the center */
-    justify-content: center; 
+    display: flex;
+    justify-content: center;
 }
 /* Styling for the footer. Making sure the position is fixed so that it appears at the bottom of the page */
 footer {
@@ -260,7 +258,7 @@ main {
 }
 .cart-table th,
 .cart-table td {
-    border: 1px solid #ccc;
+    border: 1px solid grey;
     padding: 1rem;
     text-align: center;
 }
@@ -273,19 +271,22 @@ main {
 .button{
     display: inline-block;
     margin-top: 1.5rem;
-    padding: 0.6rem 1.2rem;
+    padding: 0.4rem 1.2rem;
     background-color: darkblue;
     color: white;
     text-decoration: none;
     border-radius: 4px;
     font-weight: bold;
+    
 }
 /* Styling for some buttons on the website. This is used for buttons to be side by side */
 .button-wrapper {
   display: flex;
   gap: 10px; /* space between buttons */
 }
-
+.button:hover{
+    background-color: #001b64;
+}
 
 /* Styling for products when shown to the admin on the admin page */
 .admin-layout {
@@ -453,4 +454,77 @@ main {
 .guide-section:hover {
     transform: translateY(-3px);
     box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+}
+/* Styling for transitions in between images */
+#product-image {
+    transition: opacity 0.5s ease-in-out;
+    opacity: 1;
+}
+/* Styling for the delete button on the product detail page */
+#deleteButton {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;  /* Add a opacity and visibility transition effect */
+}
+/* Add a visible class to the delete button when it's needed */
+#deleteButton.visible {
+    opacity: 1;
+    visibility: visible;
+}
+/* Styling for drop down menu's */
+textarea,
+select {
+    appearance: none; /* remove default arrow styling for select */
+    font-family: 'Jost', sans-serif;
+    font-size: 1rem;
+    background-color: #ffffff;
+    color: #333333;
+    border: 2px solid darkblue;
+    border-radius: 6px;
+    padding: 0.5rem 1.2rem;
+    cursor: pointer;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 1rem;
+}
+/* Option styling inside dropdown */
+select option {
+    background-color: #ffffff;
+    color: #333333;
+    font-size: 1rem;
+}
+
+/* These are base styling for input fields */
+input[type="text"],
+input[type="number"],
+input[type="password"] {
+    font-family: 'Jost', sans-serif;
+    font-size: 1rem;
+    background-color: #ffffff;
+    color: #333333;
+    border: 2px solid darkblue;
+    border-radius: 6px;
+    padding: 0.5rem 1.2rem;
+    cursor: pointer;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    box-sizing: border-box;
+    margin-bottom: 1rem;
+}
+/* Hover and focus styles for the form elements */
+input[type="text"]:hover,
+input[type="text"]:focus,
+input[type="password"]:hover,
+input[type="password"]:focus,
+input[type="number"]:hover,
+input[type="number"]:focus,
+textarea:hover,
+textarea:focus,
+select:hover,
+select:focus {
+    border-color: #334155;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    outline: none;
 }

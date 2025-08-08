@@ -11,7 +11,7 @@ $order_id = $_GET['order_id'] ?? '';
         <div class="buying-guide-container">
         <h2>Thank you!</h2>
         <!-- Display the order ID to to the customer after they placed their order -->
-        <p>Your order #<?php echo htmlspecialchars($order_id); ?> has been placed successfully.</p>
+        <p>Order #<?php echo htmlspecialchars($order_id); ?> has been placed successfully.</p>
         <a href="index.php" class="button">Back to home page</a>
         </div>
     </main>

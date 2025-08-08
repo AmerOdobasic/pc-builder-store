@@ -23,7 +23,7 @@
                 while ($product = $stmt->fetch()):
                 ?>
                     <div class="product-card">
-                        <img src="<?php echo $product['image_url']; ?>" alt="<?php echo htmlspecialchars($product['name']); ?>">
+                        <img id="product-image" src="<?php echo $product['image_url']; ?>" alt="<?php echo htmlspecialchars($product['name']); ?>">
                         <h3><?php echo htmlspecialchars($product['name']); ?></h3>
                         <p>$<?php echo number_format($product['price'], 2); ?></p>
                         <a href="product-detail.php?id=<?php echo $product['id']; ?>">View</a>

@@ -23,6 +23,27 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['update_status'])) {
     header("Location: order-details.php?order_id=" . $order_id);
     exit;
 }
+// Handle when the admin wants to delete an order when the order is canceled 
+if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['delete_order'])) {
+    // Get order status again to be sure that it is canceled before proceeding
+    $stmt = $pdo->prepare("SELECT status FROM orders WHERE id = ?");
+    $stmt->execute([$order_id]);
+    $current_order = $stmt->fetch();
+
+    // Check if there is a current order and it is canceled before proceeding
+    if ($current_order && $current_order['status'] === 'Cancelled') {
+        // First delete items
+        $pdo->prepare("DELETE FROM order_items WHERE order_id = ?")->execute([$order_id]);
+        // Then delete order
+        $pdo->prepare("DELETE FROM orders WHERE id = ?")->execute([$order_id]);
+
+        // Redirect back to admin dashboard
+        header("Location: admin-orders.php"); 
+        exit;
+    } else {
+        echo "<p style='color:red;'>Order must be Cancelled before deletion.</p>";
+    }
+}
 
 // Fetch the order by its ID along with the associated user's username and email
 // .* Selects all of the columns from the orders table 
@@ -89,10 +110,10 @@ $items = $itemStmt->fetchAll(PDO::FETCH_ASSOC);
             </table>
 
             <!-- Update Order Status -->
-            <h3>Update Order Status</h3>
+            <h3 style="margin-top: 1rem;">Update Order Status</h3>
             <form method="post">
-                <select name="status" required>
-                    <!-- Add an option for each status. If the current status matches the option, then it should be selected -->
+                <select name="status" id="statusSelect" required>
+                    <!-- Add an option for each status. If the current status matches the option, then it should be selected, if not, then don't show anything -->
                     <option value="Pending" <?= $order['status'] === 'Pending' ? 'selected' : '' ?>>Pending</option>
                     <option value="Processing" <?= $order['status'] === 'Processing' ? 'selected' : '' ?>>Processing</option>
                     <option value="Shipped" <?= $order['status'] === 'Shipped' ? 'selected' : '' ?>>Shipped</option>
@@ -101,7 +122,10 @@ $items = $itemStmt->fetchAll(PDO::FETCH_ASSOC);
                 </select>
                 <button class="button" type="submit" name="update_status">Update Status</button>
             </form>
-
+            <!-- Delete Order (only allowed if the order is Cancelled) -->
+            <form method="post" onsubmit="return confirm('Are you sure you want to delete this order? This cannot be undone!');">
+                <button type="submit" name="delete_order" class="button" id="deleteButton">Delete Order</button>
+            </form>
         </main>
         <footer><p>&copy; 2025  Amer's PC Builder Store. All rights reserved.</p></footer>
     </body>
