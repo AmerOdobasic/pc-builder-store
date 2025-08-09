@@ -45,11 +45,12 @@ foreach ($optionsRaw as $opt) {
 
     <div class="product-detail">
         <img id="product-image" src="<?php echo htmlspecialchars($product['image_url']); ?>" alt="<?php echo htmlspecialchars($product['name']); ?>" class="product-image">
-        
         <!-- A class for the whole product information. PHP will be added to display from the DB -->
         <div class="product-info">
             <!-- Using number_format for better display of price and nl2br for better line breaks-->
-            <p><strong>Price:</strong> $<span id="product-price"><?php echo number_format($product['price'], 2); ?></span></p>
+            <!-- Display the price of the product. We'll use the data-base-price attribute to get the base price from the DB. 
+             This will help in the case where a user goes through different product options and the price changes -->
+            <p><strong>Price:</strong>$<span id="product-price" data-base-price="<?php echo $product['price']; ?>"><?php echo number_format($product['price'], 2); ?></span></p>
             <p><strong>Description:</strong><br> <?php echo nl2br(htmlspecialchars($product['description'])); ?></p>
             <p><strong>Stock:</strong> <?php echo (int)$product['stock']; ?></p>
 
@@ -64,11 +65,13 @@ foreach ($optionsRaw as $opt) {
                     <select name="options[<?php echo $name; ?>]" class="option-select">
                         <!-- Loop through the options-->
                         <?php foreach ($optionSet as $opt): ?>
+                            <!-- For the image, price, and name, check to see if they are set or not. If not, use the default values from the DB -->
+                            <!-- This is to solve the problem of the options not being displayed when a user goes through different product options -->
                             <option
                                 value="<?php echo htmlspecialchars($opt['option_value']); ?>"
-                                data-image="<?php echo $opt['image_url']; ?>"
-                                data-price="<?php echo $opt['override_price']; ?>"
-                                data-name="<?php echo htmlspecialchars($opt['override_name']); ?>"
+                                data-image="<?php echo $opt['image_url'] ?: $product['image_url']; ?>"
+                                data-price="<?php echo $opt['override_price'] ?: $product['price']; ?>"
+                                data-name="<?php echo htmlspecialchars($opt['override_name'] ?: $product['name']); ?>"
                             >
                                 <?php echo htmlspecialchars($opt['option_value']); ?>
                             </option>
@@ -77,7 +80,7 @@ foreach ($optionsRaw as $opt) {
                     <br><br>
                 <?php endforeach; ?>
 
-                <!-- Quantity field. I set the Default values to start with 1 product -->
+                <!-- Quantity field. I set the Default values to start with at least 1 product -->
                 <label for="quantity">Quantity:</label>
                 <input type="number" name="quantity" value="1" min="1" max="<?php echo (int)$product['stock']; ?>" required>
                 <br><br>

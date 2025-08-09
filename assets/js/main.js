@@ -12,15 +12,18 @@ document.addEventListener("DOMContentLoaded", function () {
                 return;
             }
 
-            // Get custom data attributes from the selected option
+            // Extract custom data attributes (image, price, name) from the selected <option>
+            // This basically extracts the attributes from the HTML code in product-detail.php
             const newImg = selectedOption.dataset.image;
             const newPrice = selectedOption.dataset.price;
             const newName = selectedOption.dataset.name;
 
-            // Update the image, price, and name of the product if the custom data attributes exist
+            // Select the DOM elements that display the product's image, price, and name
             const productImage = document.getElementById('product-image');
+            const productPrice = document.getElementById('product-price');
+            const productName = document.getElementById('product-name');
 
-            // Check if there is a new image and if there is an image at all
+            // Check if a new image URL is provided and the product image element exists
             if (newImg && productImage) {
                 // Fade out each image for a smooth transition between images
                 productImage.style.opacity = 0;
@@ -31,17 +34,17 @@ document.addEventListener("DOMContentLoaded", function () {
                     productImage.style.opacity = 1;
                 }, 250); // Set the transition duration to 250 milliseconds
             }
-
-            // Check if there is a new price and if there is a price at all
-            // We need to update the price of the new option and convert it to a number since it is a string by default
-            if (newPrice && productPrice) {
-                productPrice.textContent = parseFloat(newPrice);
+            // Update the displayed price. Use new price if it is available, or fall back to base price by using the stored price from the php file. Convert string to number with two decimal places.
+            if (productPrice) {
+                const priceToSet = newPrice ? parseFloat(newPrice).toFixed(2) : parseFloat(productPrice.dataset.basePrice).toFixed(2); 
+                productPrice.textContent = priceToSet;
             }
 
-            // Now lets update the name of the product 
-            if (newName && productName) {
+            // Use the same logic as above to update the name of the product.
+            if (productName) {
                 productName.textContent = newName;
             }
+
         });
     });
 

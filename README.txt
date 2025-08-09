@@ -37,7 +37,8 @@ NOTE: Do NOT include CREATE DATABASE statements in your SQL when importing to my
     https://myweb.cs.uwindsor.ca/~yourusername/index.php
 
 ADMIN ACCESS
-I have created two accounts that are visible in the 'users' table on my database, those are a user and admin
+I have created two accounts that are visible in the 'users' table on my database
+NOTE: When buying products, you have to have an account to continue. Please log in as either 'user' or 'admin'
 - For the admin account, simply sign in using the navbar and click the 'log in' button
 The Email for the admin = admin@gmail.com and the password = 'password' (most strongest password of all time i know...)
 - For the user account, the email = user@gmail.com and password = 'abcd123'

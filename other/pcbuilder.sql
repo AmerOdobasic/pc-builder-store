@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3307/
--- Generation Time: Jul 31, 2025 at 02:16 AM
+-- Generation Time: Aug 09, 2025 at 05:20 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -32,8 +32,7 @@ CREATE TABLE `cart_items` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
-  `quantity` int(11) NOT NULL DEFAULT 1,
-  `added_at` timestamp NOT NULL DEFAULT current_timestamp()
+  `quantity` int(11) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -76,6 +75,14 @@ CREATE TABLE `orders` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`id`, `user_id`, `total_price`, `status`, `created_at`) VALUES
+(12, 5, 59.99, 'Cancelled', '2025-08-06 18:43:06'),
+(13, 7, 59.99, 'Pending', '2025-08-06 18:56:58');
+
 -- --------------------------------------------------------
 
 --
@@ -90,6 +97,14 @@ CREATE TABLE `order_items` (
   `quantity` int(11) NOT NULL,
   `price` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `order_items`
+--
+
+INSERT INTO `order_items` (`id`, `order_id`, `product_id`, `quantity`, `price`) VALUES
+(12, 12, 36, 1, 59.99),
+(13, 13, 36, 1, 59.99);
 
 -- --------------------------------------------------------
 
@@ -114,26 +129,26 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `name`, `category_id`, `price`, `stock`, `description`, `image_url`, `created_at`) VALUES
-(21, 'AMD RYZEN 7 9800X3D', 1, 649.99, 8, 'The best CPU for gaming', 'assets/images/71aHvYUgX1L._AC_SL1500_.jpg', '2025-07-23 05:54:09'),
+(21, 'AMD RYZEN 7 9800X3D', 1, 649.99, 7, 'The best CPU for gaming', 'assets/images/71aHvYUgX1L._AC_SL1500_.jpg', '2025-07-23 05:54:09'),
 (22, 'GIGABYTE RTX 4070 Ti SUPER', 2, 1255.27, 3, '1440p gaming GPU.', 'assets/images/lmX1wMuJvkK8-OhxrmHVlg.c-r.jpg', '2025-07-23 05:54:09'),
 (23, 'TUFF GAMING RTX 5090', 2, 3999.99, 3, 'The most powerful GPU on the planet', 'assets/images/71h-T6Gez3L._AC_SL1500_.jpg', '2025-07-23 05:54:09'),
 (24, 'CORSAIR VENGEANCE DDR5 RAM', 3, 120.99, 15, '32GB RAM for DDR5 supported motherboards', 'assets/images/51syuod9YwL._AC_SL1200_.jpg', '2025-07-23 05:54:09'),
-(25, 'WD_BLACK 1TB NVMe SSD', 4, 107.99, 24, 'Reliable and fast 1TB SDD', 'assets/images/71+7Y1MFojL._AC_SL1500_.jpg', '2025-07-23 05:54:09'),
+(25, 'WD_BLACK 1TB NVMe SSD', 4, 107.99, 24, 'Reliable and fast SDD\'s', 'assets/images/71+7Y1MFojL._AC_SL1500_.jpg', '2025-07-23 05:54:09'),
 (26, 'Corsair RMx 1000-Watt', 5, 289.99, 12, '1000W Fully Modular Power Supply for all of your gaming needs', 'assets/images/71Ol9ncug1L._AC_SL1500_.jpg', '2025-07-23 05:54:09'),
 (27, 'GIGABYTE B550M K MOTHERBOARD', 6, 129.99, 9, 'Micro-ATX Mobo for AMD AM4 CPUS', 'assets/images/71Gm7vworoL._AC_SL1500_.jpg', '2025-07-23 05:54:09'),
 (28, 'Corsair 4000D Case', 7, 139.99, 8, 'High Airflow case for a ATX Mobo', 'assets/images/4000D_MODULAR_BLACK_1_1280x960_9db5c7e9-7637-402b-a90c-c561c0da769e_1280x960.jpg', '2025-07-23 05:54:09'),
 (29, 'Gigabyte RX 7600 XT', 2, 419.99, 14, 'Budget friendly 1080p GPU', 'assets/images/71PSxIuhYJL._AC_SL1500_.jpg', '2025-07-23 05:54:09'),
-(30, 'MSI B760 Gaming Plus WiFi Motherboard', 6, 199.99, 8, 'DDR5 Compatible Mobo for LGA Socket', 'assets/images/91uLE4tvpyL._AC_SL1500_.jpg', '2025-07-23 05:54:09'),
+(30, 'MSI B760 Gaming Plus WiFi Motherboard', 6, 199.99, 6, 'DDR5 Compatible Mobo for LGA Socket', 'assets/images/91uLE4tvpyL._AC_SL1500_.jpg', '2025-07-23 05:54:09'),
 (31, 'EVGA 650W Power Supply', 5, 95.99, 6, '650W PSU for ATX Mobos', 'assets/images/61-WPd9RvJL._AC_SL1000_.jpg', '2025-07-23 05:54:09'),
 (32, 'TEAMGROUP DDR4 RAM', 3, 49.99, 20, 'Fast DDR4 RAM', 'assets/images/61+0UEKmgoL._AC_SL1500_.jpg', '2025-07-23 05:54:09'),
-(33, 'NZXT H9 Flow', 7, 159.99, 35, 'Sleek ATX Mid-Tower Case from NZXT', 'assets/images/51rOo9MITKL._AC_SL1000_.jpg', '2025-07-23 05:54:09'),
+(33, 'NZXT H9 Flow', 7, 159.99, 31, 'Sleek ATX Mid-Tower Case from NZXT', 'assets/images/51rOo9MITKL._AC_SL1000_.jpg', '2025-07-23 05:54:09'),
 (34, 'SAMSUNG 870 EVO SATA III SSD', 4, 139.99, 13, 'Fast and reliable SATA SSD', 'assets/images/911ujeCkGfL._AC_SL1500_.jpg', '2025-07-23 05:54:09'),
 (35, 'GIGABYTE X870 MOTHERBOARD', 6, 279.99, 8, 'High-end AM5 Only for the best gamers', 'assets/images/81zT2fwPK9L._AC_SL1500_.jpg', '2025-07-23 05:54:09'),
-(36, 'DIYPC DIY MICRO-ATX CASE', 7, 59.99, 25, 'Small Case for Micro-ATX Motherboards', 'assets/images/11-353-239-01.jpg', '2025-07-23 05:54:09'),
+(36, 'DIYPC DIY MICRO-ATX CASE', 7, 59.99, 21, 'Small Case for Micro-ATX Motherboards', 'assets/images/11-353-239-01.jpg', '2025-07-23 05:54:09'),
 (37, 'CORSAIR 128GB RGB RAM', 3, 514.99, 15, 'Super Fast RGB DDR5 RAM', 'assets/images/61EVf-QxpvL._AC_SL1500_.jpg\n', '2025-07-23 05:54:09'),
 (38, 'AMD Ryzen 7 5800X', 1, 239.99, 4, '8-core AMD processor on AM4.', 'assets/images/61IIbwz-+ML._AC_SL1500_.jpg', '2025-07-23 05:54:09'),
 (39, 'Intel i7-12700K', 1, 299.99, 10, '12th Gen CPU with high performance.', 'assets/images/51bW9uJzJFL._AC_SL1000_.jpg', '2025-07-23 05:54:09'),
-(40, 'MSI RTX 5060', 2, 439.99, 45, 'The new popular mid-range GPU for budget gamers', 'assets/images/71edk5q7MPL._AC_SL1500_.jpg', '2025-07-23 05:54:09');
+(40, 'MSI RTX 5060', 2, 439.99, 45, 'The new popular mid-range GPU for budget gamers!', 'assets/images/71edk5q7MPL._AC_SL1500_.jpg', '2025-07-23 05:54:09');
 
 -- --------------------------------------------------------
 
@@ -164,11 +179,11 @@ INSERT INTO `product_options` (`id`, `product_id`, `option_name`, `option_value`
 (49, 22, 'Options', 'GIGABYTE RTX 4070 Ti SUPER', 'assets/images/lmX1wMuJvkK8-OhxrmHVlg.c-r.jpg', NULL, NULL),
 (50, 22, 'Options', 'Refurbished from ZOTAC', 'assets/images/810012084499.png', 1059.99, 'Refurbished ZOTAC RTX 4070 Ti SUPER'),
 (51, 23, 'Model', 'TUFF GAMING RTX 5090', 'assets/images/71h-T6Gez3L._AC_SL1500_.jpg', NULL, NULL),
-(52, 23, 'Model', 'ZOTAC 5090', 'assets/images/18931630.jpg', 3999.99, 'ZOTAC RGB RTX 5090'),
+(52, 23, 'Model', 'ZOTAC RGB 5090', 'assets/images/18931630.jpg', 4199.99, 'ZOTAC RGB RTX 5090'),
 (53, 24, 'RAM Size', '32GB RAM', 'assets/images/51syuod9YwL._AC_SL1200_.jpg', NULL, NULL),
-(54, 24, 'RAM Size', '64GB RAM', 'assets/images/51syuod9YwL._AC_SL1200_.jpg', NULL, NULL),
+(54, 24, 'RAM Size', '64GB RAM', 'assets/images/51syuod9YwL._AC_SL1200_.jpg', 159.99, NULL),
 (55, 25, 'Storage Size', '1TB', 'assets/images/71+7Y1MFojL._AC_SL1500_.jpg', NULL, NULL),
-(56, 25, 'Storage Size', '2TB', 'assets/images/71+7Y1MFojL._AC_SL1500_.jpg', NULL, NULL),
+(56, 25, 'Storage Size', '2TB', 'assets/images/71+7Y1MFojL._AC_SL1500_.jpg', 139.99, 'WD_BLACK 2TB NVMe SSD'),
 (57, 26, 'Wattage', '1000W', 'assets/images/71+7Y1MFojL._AC_SL1500_.jpg', NULL, NULL),
 (58, 26, 'Wattage', '1200W', 'assets/images/811oS15In2L._AC_SL1500_.jpg', 199.99, 'Corsair RM1200x'),
 (59, 27, 'Options', 'B550M K MOBO', 'assets/images/71+7Y1MFojL._AC_SL1500_.jpg', NULL, NULL),
@@ -180,13 +195,13 @@ INSERT INTO `product_options` (`id`, `product_id`, `option_name`, `option_value`
 (65, 31, 'Wattage', '650W', 'assets/images/61-WPd9RvJL._AC_SL1000_.jpg', NULL, NULL),
 (66, 31, 'Wattage', '750W', 'assets/images/71z2ttTn6KL._AC_SL1200_.jpg', 129.99, 'EVGA 750 GQ, 80+ GOLD'),
 (67, 32, 'RAM Size', '16GB RAM', 'assets/images/51syuod9YwL._AC_SL1200_.jpg', NULL, NULL),
-(68, 32, 'RAM Size', '32GB RAM', 'assets/images/51syuod9YwL._AC_SL1200_.jpg', NULL, NULL),
+(68, 32, 'RAM Size', '32GB RAM', 'assets/images/51syuod9YwL._AC_SL1200_.jpg', 79.99, NULL),
 (69, 33, 'Color', 'Black', 'assets/images/51rOo9MITKL._AC_SL1000_.jpg', NULL, NULL),
 (70, 33, 'Color', 'White', 'assets/images/ezgif-5d14c67b191b3e.jpg', NULL, NULL),
-(71, 34, 'Storage Size', '1TB', 'assets/images/51rOo9MITKL._AC_SL1000_.jpg', NULL, NULL),
-(72, 34, 'Storage Size', '2TB', 'assets/images/51rOo9MITKL._AC_SL1000_.jpg', NULL, NULL),
+(71, 34, 'Storage Size', '1TB', 'assets/images/911ujeCkGfL._AC_SL1500_.jpg', NULL, NULL),
+(72, 34, 'Storage Size', '2TB', 'assets/images/911ujeCkGfL._AC_SL1500_.jpg', 159.99, NULL),
 (73, 35, 'Color', 'Black', 'assets/images/81zT2fwPK9L._AC_SL1500_.jpg', NULL, NULL),
-(74, 35, 'Color', 'White', 'assets/images/81zT2fwPK9L._AC_SL1500_.jpg', NULL, NULL),
+(74, 35, 'Color', 'White', 'assets/images/81Xs4KNsUgL._AC_SL1500_.jpg', NULL, NULL),
 (75, 36, 'Color', 'Black', 'assets/images/11-353-239-01.jpg', NULL, NULL),
 (76, 36, 'Color', 'White', 'assets/images/51l39Z01HkL._AC_SL1280_.jpg', NULL, NULL),
 (77, 37, 'RAM SIZE', '128GB', 'assets/images/61EVf-QxpvL._AC_SL1500_.jpg', NULL, NULL),
@@ -196,7 +211,7 @@ INSERT INTO `product_options` (`id`, `product_id`, `option_name`, `option_value`
 (81, 39, 'Model', 'i7-12700K', 'assets/images/51bW9uJzJFL._AC_SL1000_.jpg', NULL, NULL),
 (82, 39, 'Model', 'i9-12900K', 'assets/images/51klBAsxGHL._AC_SL1500_.jpg', 399.99, 'Intel I9-12900K'),
 (83, 40, 'Color', 'Black', 'assets/images/71edk5q7MPL._AC_SL1500_.jpg', NULL, NULL),
-(84, 40, 'Color', 'White', 'assets/images/71LwCtJ-DhL._AC_SL1500_.jpg', NULL, NULL);
+(84, 40, 'Color', 'White', 'assets/images/71LwCtJ-DhL._AC_SL1500_.jpg', 449.99, NULL);
 
 -- --------------------------------------------------------
 
@@ -239,7 +254,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `username`, `email`, `password_hash`, `created_at`, `role`) VALUES
 (4, 'user', 'user@gmail.com', '$2y$10$p0YK06tdVZP.WyiidC3Aqui53mJJ74FuE9TAM4ue/ccacCGqsGLDG', '2025-07-29 05:04:04', 'user'),
-(5, 'admin', 'admin@gmail.com', '$2y$10$0lMkS8stjFDWK2PzmJmfi.z/1vztCYlatxYa.4oW5SWCcXalZZNLS', '2025-07-30 02:55:13', 'admin');
+(5, 'admin', 'admin@gmail.com', '$2y$10$0lMkS8stjFDWK2PzmJmfi.z/1vztCYlatxYa.4oW5SWCcXalZZNLS', '2025-07-30 02:55:13', 'admin'),
+(7, 'test', 'test@gmail.com', '$2y$10$54GPT6tYUZmKdVbWE8gJgeNNf34eBaT04t6qVl0yc4KfA0AC0ZWpm', '2025-08-06 18:56:41', 'user');
 
 --
 -- Indexes for dumped tables
@@ -323,13 +339,13 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `order_items`
 --
 ALTER TABLE `order_items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `products`
@@ -341,19 +357,19 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `product_options`
 --
 ALTER TABLE `product_options`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=99;
 
 --
 -- AUTO_INCREMENT for table `support_messages`
 --
 ALTER TABLE `support_messages`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Constraints for dumped tables

@@ -22,7 +22,7 @@ if (session_status() === PHP_SESSION_NONE) {
         <a href="/pc-builder-store/index.php">Home</a>
         <a href="/pc-builder-store/products.php">All Products</a>
         <a href="/pc-builder-store/cart.php">Cart</a>
-        <a href="/pc-builder-store/help-section/help-center.html">Help</a>
+        <a href="/pc-builder-store/help-section/help-center.html">Help Center</a>
         <a href="/pc-builder-store/about.html">About</a>
 
         <!-- Admin link only for logged-in users with admin role. Check if a user is logged in, if they have an role, then if they are an admin -->
